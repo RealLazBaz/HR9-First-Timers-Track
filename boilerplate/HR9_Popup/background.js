@@ -9,7 +9,7 @@ function howLongOnSite (website)
     {
         webInfo [website] = webInfo [website] + 1;
 
-        chrome.storage.local.set({"The freaking information" : webInfo};
+        chrome.storage.local.set({"The freaking information" : webInfo});
         chrome.storage.local.get("The freaking information", function(data)
         {
             console.log("This is WebInfo: " + data);
