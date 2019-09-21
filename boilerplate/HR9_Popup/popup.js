@@ -6,4 +6,40 @@ document.addEventListener('DOMContentLoaded', function() {
      window.open('https://hack.rice.edu/');
   }, false);
   
+
+//Timer code
+
+TimeMe.initialize({
+  currentPageName: "my-home-page", // current page
+  idleTimeoutInSeconds: 5, // stop recording time due to inactivity
+  websocketOptions: { // optional
+    websocketHost: "ws://your_host:your_port",
+    appId: "insert-your-made-up-app-id"
+  }
+});
+
+TimeMe.callAfterTimeElapsedInSeconds(4, function(){
+  console.log("The user has been using the page for 4 seconds! Let's prompt them with something.");
+});
+
+TimeMe.callAfterTimeElapsedInSeconds(9, function(){
+  console.log("The user has been using the page for 9 seconds! Let's prompt them with something.");
+});
+
+
+window.onload = function(){
+  TimeMe.trackTimeOnElement('area-of-interest-1');
+  TimeMe.trackTimeOnElement('area-of-interest-2');
+  setInterval(function(){
+    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+    document.getElementById('timeInSeconds').textContent = timeSpentOnPage.toFixed(2);
+
+    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-1');
+    document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
+
+    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
+    document.getElementById('area-of-interest-time-2').textContent = timeSpentOnElement.toFixed(2);
+  }, 25);
+}
+
 }, false);
