@@ -1,7 +1,7 @@
 // {website : time spent on it, website2 : time spent on that, ...}
-const globalVariable = {
-    webInfo: {}
-};
+// const globalVariable = {
+//     webInfo: {}
+// };
 
 var intervalId = 0;
     

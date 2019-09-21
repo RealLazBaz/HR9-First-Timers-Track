@@ -1,7 +1,8 @@
 var chart;
 
 window.onload = function () {
-    list = []
+    console.log("hello it got here");
+    list = [];
     Object.keys(webInfo).forEach(function(key) {
         list.push({y:webInfo[key],label:key});
     });
