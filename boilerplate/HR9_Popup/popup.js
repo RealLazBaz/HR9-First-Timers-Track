@@ -7,10 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }, false);
   
 
-  //get the id of the page
-  var id = null;
-  chrome.tabs.getCurrent(function(tab){id = chrome.tabs.getCurrent.id;});
-
+  
+  
 //Timer code
 
 TimeMe.initialize({
@@ -32,19 +30,26 @@ TimeMe.callAfterTimeElapsedInSeconds(9, function(){
 
 
 window.onload = function(){
-  TimeMe.trackTimeOnElement('area-of-interest-time-1');
-  TimeMe.trackTimeOnElement('area-of-interest-2');
+  //get the id of the page
+  var id = null;
+  //active = true means active tab
+  //current window = true means current window
+  chrome.tabs.query({active : true, currentWindow : true}, 
+    function(tabs){
+      id = tabs[0].id;
+      console.log(id);
+      TimeMe.trackTimeOnElement(id);
+    }
+  );
+  
   setInterval(function(){
     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
     document.getElementById('timeInSeconds').textContent = timeSpentOnPage.toFixed(2);
 
-    console.log(id)
-    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-time-1');
+    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds(id);
     document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
 
-    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
-    document.getElementById('area-of-interest-time-2').textContent = timeSpentOnElement.toFixed(2);
-  }, 25);
+    }, 1000);
 }
 
 }, false);
