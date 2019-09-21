@@ -12,7 +12,8 @@ function howLongOnSite (website)
         chrome.storage.local.set({"The freaking information" : webInfo});
         chrome.storage.local.get("The freaking information", function(data)
         {
-            console.log("This is WebInfo: " + data);
+            key = "The freaking information"
+            console.log("This is WebInfo: " + data.key);
         });
     }
 }
