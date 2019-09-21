@@ -2,53 +2,54 @@
 <html>
 <head>
 	<title>Extension Name</title>
-	<script src="timeme.min.js"></script>
 	<script src="popup.js"></script>
 	<link rel="stylesheet" href="style.css">
 	
-	
-	
+	<script src="timeme.min.js"></script>
+    <script src="../timeme.js"></script>
+		<script type="text/javascript">
+			TimeMe.initialize({
+				currentPageName: "my-home-page", // current page
+				idleTimeoutInSeconds: 5, // stop recording time due to inactivity
+				websocketOptions: { // optional
+					websocketHost: "ws://your_host:your_port",
+					appId: "insert-your-made-up-app-id"
+				}
+			});
+
+			TimeMe.callAfterTimeElapsedInSeconds(4, function(){
+				console.log("The user has been using the page for 4 seconds! Let's prompt them with something.");
+			});
+
+			TimeMe.callAfterTimeElapsedInSeconds(9, function(){
+				console.log("The user has been using the page for 9 seconds! Let's prompt them with something.");
+			});
+
+
+			window.onload = function(){
+				TimeMe.trackTimeOnElement('area-of-interest-1');
+				TimeMe.trackTimeOnElement('area-of-interest-2');
+				setInterval(function(){
+					var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+					document.getElementById('timeInSeconds').textContent = timeSpentOnPage.toFixed(2);
+
+					var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-1');
+					document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
+
+					var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
+					document.getElementById('area-of-interest-time-2').textContent = timeSpentOnElement.toFixed(2);
+				}, 25);
+			}
+		</script>
 
 </head>
 <body>
-	<h1>Bye, World!</h1>
-	<button id="checkPage">Go to Hack Rice Website.</button>
-	<div class="top-level-message">
-		<h1>TimeMe.js</h1>
-		<h3>You have been active on this page for</h3>
-	</div>
 	<div class="time-message">
+		<h1> You have been on this site for:</h1>
 		<h1>
 			<span id="timeInSeconds">0</span> <span>seconds</span>
 		</h1>
 	</div>
-	<div>
-		<h3>Demo</h3>
-		Notice the timer above?  It is tracking how long you are actively viewing this web page.
-		It is smart enough to stop incrementing when you minimize the browser or if you switch to
-		a different tab.  Try it out!  It also stops incrementing if you go idle for more than 5
-		seconds (meaning you don't move the mouse or enter the keyboard for 5 seconds).  While 5
-		seconds is a relatively short time to gauge inactivity, it can be increased to a more
-		realistic value (such as 60 seconds) to determine that a user is no longer viewing the page
-		and has left the browser or computer altogether.
-	</div>
-	<div>
-		<h3>Tracking specific elements</h3>
-		TimeMe allows you to track how users are interacting <i>with specific elements</i> on
-		your page.  If you go idle, the timer also stops.
-
-		<br/>
-
-		<div class="area-of-interest" id="area-of-interest-1">
-			Interact with this element<br/><br/>
-			Interaction: <span id="area-of-interest-time-1"></span> seconds.
-		</div>
-
-		<div class="area-of-interest" id="area-of-interest-2">
-			Interact with this element<br/><br/>
-			Interaction: <span id="area-of-interest-time-2"></span> seconds.
-		</div>
-	</div>				
-	<br/><br/>
+	<button id="checkPage">Detailed Statistics</button>
 </body>
 </html>
