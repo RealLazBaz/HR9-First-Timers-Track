@@ -8,7 +8,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	
 	title:{
-		text:"Fortune 500 Companies by Country"
+		text:"Website Usage by Total Time Alotted"
 	},
 	axisX:{
 		interval: 1
@@ -16,11 +16,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	axisY2:{
 		interlacedColor: "rgba(1,77,101,.2)",
 		gridColor: "rgba(1,77,101,.1)",
-		title: "Number of Companies"
+		title: "Number of Minutes"
 	},
 	data: [{
 		type: "bar",
-		name: "companies",
+		name: "Websites",
 		axisYType: "secondary",
 		color: "#014D65",
 		dataPoints: [
