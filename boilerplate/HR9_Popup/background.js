@@ -10,7 +10,9 @@ function howLongOnSite (website)
 }
 
 // {website : time spent on it, website2 : time spent on that, ...}
-const webInfo = {}
+const globalVariable = {
+    webInfo: {}
+};
 var intervalId = 0
 //Timer code
 chrome.tabs.onActivated.addListener (
