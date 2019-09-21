@@ -11,6 +11,12 @@ const globalVariable = {
     //     { y: 9, label: "Italy" }
     // ]
 };
+
+list = []
+Object.keys(webInfo).forEach(function(key) {
+    list.push({y:webInfo[key],label:key});
+});
+
 var intervalId = 0;
 var chart;
 
@@ -34,7 +40,7 @@ window.onload = function () {
             name: "Websites",
             axisYType: "secondary",
             color: "#014D65",
-            dataPoints: [...globalVariable.webInfo]
+            dataPoints: list
                 // { y: 3, label: "Sweden" },
                 // { y: 7, label: "Taiwan" },
                 // { y: 5, label: "Russia" },
