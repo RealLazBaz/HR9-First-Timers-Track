@@ -68,7 +68,13 @@ function howLongOnSite (website)
     }
 }
 
+<<<<<<< HEAD
 
+=======
+// {website : time spent on it, website2 : time spent on that, ...}
+const webInfo  = {};
+var intervalId = 0
+>>>>>>> 587cfdb7c933706d146271f6b71714d0136e90aa
 //Timer code
 chrome.tabs.onActivated.addListener (
     function (activeInfo ){
@@ -89,6 +95,9 @@ chrome.tabs.onActivated.addListener (
 )
 ;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 587cfdb7c933706d146271f6b71714d0136e90aa
 
