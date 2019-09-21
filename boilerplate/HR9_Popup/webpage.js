@@ -28,5 +28,5 @@ window.onload = function () {
         }]
     });
     chart.render();
-    
+    console.log("webpage ran");
 }
