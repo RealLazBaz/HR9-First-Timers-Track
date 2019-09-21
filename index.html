@@ -4,17 +4,17 @@
 <h1>
 
 </h1><script src="background.js">
-	document.write(webInfo)
+	{{ document.write(webInfo) }}
 </script></h1>
-
-<script>
+<script src="./boilerplate/HR9_Popup/background.js"></script>
+<!-- <script>
 window.onload = function () {
 	
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	
 	title:{
-		text:"Website Usage with Total Time Alotted"
+		text:"Website Usage with Total Time Allotted"
 	},
 	axisX:{
 		interval: 1
@@ -54,7 +54,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 chart.render();
 
 }
-</script>
+</script> -->
 </head>
 <body>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>

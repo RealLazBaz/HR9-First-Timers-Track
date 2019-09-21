@@ -7,3 +7,4 @@ function doInCurrentTab(tabCallback) {
 
 var activeTabId = null;
 doInCurrentTab( function(tab){ activeTabId = tab.id } );
+
