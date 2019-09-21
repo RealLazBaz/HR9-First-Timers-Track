@@ -1,15 +1,14 @@
 // {website : time spent on it, website2 : time spent on that, ...}
 const globalVariable = {
-    webInfo: {}
-    // [
-    //     { y: 3, label: "Sweden" },
-    //     { y: 7, label: "Taiwan" },
-    //     { y: 5, label: "Russia" },
-    //     { y: 9, label: "Spain" },
-    //     { y: 7, label: "Brazil" },
-    //     { y: 7, label: "India" },
-    //     { y: 9, label: "Italy" }
-    // ]
+    webInfo: [
+        { y: 3, label: "Sweden" },
+        { y: 7, label: "Taiwan" },
+        { y: 5, label: "Russia" },
+        { y: 9, label: "Spain" },
+        { y: 7, label: "Brazil" },
+        { y: 7, label: "India" },
+        { y: 9, label: "Italy" }
+    ]
 };
 
 list = []
