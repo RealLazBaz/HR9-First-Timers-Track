@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }, false);
   
 
+  //get the id of the page
+  var id = null;
+  chrome.tabs.getCurrent(function(tab){id = chrome.tabs.getCurrent.id;});
+
 //Timer code
 
 TimeMe.initialize({
@@ -28,13 +32,14 @@ TimeMe.callAfterTimeElapsedInSeconds(9, function(){
 
 
 window.onload = function(){
-  TimeMe.trackTimeOnElement('area-of-interest-1');
+  TimeMe.trackTimeOnElement('area-of-interest-time-1');
   TimeMe.trackTimeOnElement('area-of-interest-2');
   setInterval(function(){
     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
     document.getElementById('timeInSeconds').textContent = timeSpentOnPage.toFixed(2);
 
-    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-1');
+    console.log(id)
+    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-time-1');
     document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
 
     var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
