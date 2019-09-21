@@ -2,8 +2,9 @@ var chart;
 
 window.onload = function () {
     console.log("hello it got here");
+    console.log(webInfo);  
     list = [];
-    Object.keys(webInfo).forEach(function(key) {
+    Object.keys(chrome.storage.sync.get("The freaking information")).forEach(function(key) {
         list.push({y:webInfo[key],label:key});
     });
     chart = new CanvasJS.Chart("chartContainer", {
