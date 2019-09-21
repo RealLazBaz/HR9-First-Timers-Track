@@ -4,6 +4,19 @@
 	<title>Extension Name</title>
 	<script src="popup.js"></script>
 	<link rel="stylesheet" href="style.css">
+	
+	<script src="timeme.min.js"></script>
+    <script type="text/javascript">
+	    // Initialize library and start tracking time
+	    TimeMe.initialize({
+    	currentPageName: "my-home-page", // current page
+    	idleTimeoutInSeconds: 30 // seconds
+	    });
+
+	    // Retrieve time spent on current page
+	    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+	</script>
+	
 </head>
 <body>
 	<h1>Byegg, World!</h1>
