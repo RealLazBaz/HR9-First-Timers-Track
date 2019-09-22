@@ -9,7 +9,7 @@ function howLongOnSite (website)
         webInfo [website] = webInfo [website] + 1;
 
         chrome.storage.sync.set({'key': webInfo}, function() {
-            alert('stuff saved');
+            console.log('stuff saved');
         });
         chrome.storage.local.get('key', function(data) {
             console.log("This is data: " + data[0]);
