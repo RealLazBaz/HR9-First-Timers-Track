@@ -12,18 +12,10 @@ function howLongOnSite (website)
             console.log('stuff saved');
         });
 
-        /*chrome.storage.sync.get(['key'], function(data) {
-            console.log("This is data: " + data[0]); //undefined
-            console.log("WebInfo is :" + webInfo); //[object Object]
-            console.log("Data is :" + data); //[object Object]
-            var key = 'key';
-            console.log("data.key:" + data.key); //[object Object]
-        });
-        */
 
 
        chrome.storage.local.get(['key'], function(result) {
-        console.log('Value currently is ' + result.key);
+        console.log(result);
       });
     }
 }
