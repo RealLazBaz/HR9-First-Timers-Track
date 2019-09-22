@@ -4,7 +4,7 @@
 	"version": "1.0",
   	"browser_action": {
   		"default_title": "Track Time",
-    	"default_icon": "frank.jpg",
+    	"default_icon": "frank.png",
     	"default_popup": "popup.html"
   	}, 
   	"permissions": [
