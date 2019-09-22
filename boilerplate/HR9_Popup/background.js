@@ -6,7 +6,7 @@ function howLongOnSite (website)
 {
     return function()
     {
-        webInfo [website] = webInfo [website] + 1;
+        webInfo [website] = webInfo [website] + 5;
         
         chrome.storage.local.set({'key': webInfo}, function() {
             console.log('stuff saved');
@@ -15,10 +15,7 @@ function howLongOnSite (website)
 
 
        chrome.storage.local.get(['key'], function(result) {
-        console.log(result);
-        var thing = 'key'
         console.log(result.key);
-        console.log(result.thing);
       });
     }
 }
@@ -36,7 +33,7 @@ chrome.tabs.onActivated.addListener (
                 //if this is a new URL
                 if (!webInfo[tab.url])
                     webInfo[tab.url] = 0
-                intervalId = setInterval (howLongOnSite (tab.url),20000); 
+                intervalId = setInterval (howLongOnSite (tab.url),5000); 
             }
         );
     }

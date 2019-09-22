@@ -4,9 +4,16 @@ window.onload = function () {
     console.log("hello it got here");
     console.log(webInfo);  
     list = [];
-    Object.keys(chrome.storage.sync.get("The freaking information")).forEach(function(key) {
-        list.push({y:webInfo[key],label:key});
+    var dictionary = {}
+    chrome.storage.local.get(['key'], function(result) {
+        dictionary = result.key;
+        console.log(dictionary);
     });
+    
+    Object.keys(dictionary.forEach(function(key) {
+        list.push({y:webIndictionary[key],label:key});
+    }));
+    
     chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         
