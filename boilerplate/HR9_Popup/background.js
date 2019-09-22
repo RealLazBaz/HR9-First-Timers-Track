@@ -37,5 +37,3 @@ chrome.tabs.onActivated.addListener (
         );
     }
 );
-
-//control the popup
