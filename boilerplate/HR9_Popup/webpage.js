@@ -11,8 +11,10 @@ window.onload = function () {
     });
     
     Object.keys(dictionary.forEach(function(key) {
-        list.push({y:webIndictionary[key],label:key});
+        list.push({y:dictionary[key],label:key});
     }));
+    console.log("The following line contains list");
+    console.log(list);
     
     chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
