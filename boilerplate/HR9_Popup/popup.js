@@ -35,32 +35,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
       element.appendChild(para2);
       */
-        list.push({y:dictionary[key],label:key});
+
+     var siteName = document.createElement(key);
+     var node = document.createTextNode(key+ "          ");
+     siteName.appendChild(node);
+
+     var element = document.getElementById("contents");
+     element.appendChild(para);
+     //create a text element that displays the amount of time on the site
+     var siteTime = document.createElement(key + "\n");
+     var node2 = document.createTextNode(dictionary[key]);
+     para2.appendChild(node2);
+     
+     element.appendChild(siteTime);
   });
-  chart = new CanvasJS.Chart("chartContainer", {
-    animationEnabled: true,
-    
-    title:{
-        text:"Website Usage with Total Time Allotted"
-    },
-    axisX:{
-        interval: 1
-    },
-    axisY2:{
-        interlacedColor: "rgba(1,77,101,.2)",
-        gridColor: "rgba(1,77,101,.1)",
-        title: "Number of Minutes"
-    },
-    data: [{
-        type: "bar",
-        name: "Websites",
-        axisYType: "secondary",
-        color: "#014D65",
-        dataPoints: list
-    }]
-  });
-  chart.render();
-  console.log("webpage ran");
 
   });
   
