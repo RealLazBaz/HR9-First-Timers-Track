@@ -28,9 +28,10 @@ chrome.tabs.onActivated.addListener (
         chrome.tabs.get(activeInfo.tabId, 
             function (tab) //callback
             {
+                website = tab.url.slice(tab.url.indexOf("//")+2, tab.url.indexOf("/",8));
                 //if this is a new URL
-                if (!webInfo[tab.url])
-                    webInfo[tab.url] = 0
+                if (!webInfo[website])
+                    webInfo[website] = 0
                 intervalId = setInterval (howLongOnSite (tab.url),5000); 
             }
         );
@@ -49,6 +50,22 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(dictionary);
     });
     
+    //for every website
+    Object.keys(dictionary).forEach(function(key) {
+        //create a text element that displays the website name
+        var para = document.createElement(key);
+        var node = document.createTextNode(key);
+        para.appendChild(node);
+
+        var element = document.getElementById("contents");
+        element.appendChild(para);
+        //create a text element that displays the amount of time on the site
+        var para2 = document.createElement(key);
+        var node2 = document.createTextNode(dictionary[key]);
+        para2.appendChild(node2);
+
+        element.appendChild(para2);
+    });
     /*Object.keys(dictionary.forEach(function(key) {
         list.push({y:dictionary[key],label:key});
         document.getElementById("timeInSeconds").textContent = dictionary[key]
