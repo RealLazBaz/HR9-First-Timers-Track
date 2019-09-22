@@ -18,24 +18,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
       console.log("about to iterate through the dictionary");
       list = []
+      var index = 0
       Object.keys(dictionary).forEach(function(key) {
-      console.log("looping through the ddictionary right now to dist=play itttttttttt");
-
-      //create a text element that displays the website name
-      var para = document.createElement(key);
-      var node = document.createTextNode(key+ "         ");
-      para.appendChild(node);
-
-      var element = document.getElementById("contents");
-      element.appendChild(para);
+        var table = document.getElementById("table");
+      
       //create a text element that displays the amount of time on the site
-      var para2 = document.createElement(key);
-      var node2 = document.createTextNode(dictionary[key]);
-      var linebreak = document.createElement("br");
-      para2.appendChild(node2);
-
-      element.appendChild(para2);
-      element.appendChild(linebreak); 
+      //create a row
+      var row = table.insertRow(index);
+      //create the data cells
+      var siteCell = row.insertCell(0);
+      row.insertCell(1); //empty cell so that there is space
+      var timeCell = row.insertCell(2);
+      
+      siteCell.innerHTML = key;
+      timeCell.innerHTML = dictionary[key];
+      siteCell.id = key + "identification"; 
+      index += 1;
   });
 
   });
