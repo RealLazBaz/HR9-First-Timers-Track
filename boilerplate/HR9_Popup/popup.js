@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   //for every website
+  console.log("about to iterate through the dictionary");
   Object.keys(dictionary).forEach(function(key) {
     console.log("looping through the ddictionary right now to dist=play itttttttttt");
       //create a text element that displays the website name
