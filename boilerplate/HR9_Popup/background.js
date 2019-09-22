@@ -12,7 +12,7 @@ function howLongOnSite (website)
             alert('stuff saved');
         });
         chrome.storage.local.get('key', function(data) {
-            console.log("This is WebInfo: " + data.key);
+            console.log("This is data: " + data[0]);
         });
     }
 }
