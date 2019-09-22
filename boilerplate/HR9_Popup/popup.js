@@ -30,11 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
       element.appendChild(para);
       //create a text element that displays the amount of time on the site
       var para2 = document.createElement(key);
-      var node2 = document.createTextNode(dictionary[key] + "\n");
+      var node2 = document.createTextNode(dictionary[key]);
+      var linebreak = document.createElement("br");
       para2.appendChild(node2);
 
       element.appendChild(para2);
-      
+      element.appendChild(linebreak); 
   });
 
   });
