@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   //for every website
   Object.keys(dictionary).forEach(function(key) {
+    console.log("looping through the ddictionary right now to dist=play itttttttttt")
       //create a text element that displays the website name
       var para = document.createElement(key);
       var node = document.createTextNode(key);
