@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
       console.log("about to iterate through the dictionary");
+      list = []
       Object.keys(dictionary).forEach(function(key) {
       console.log("looping through the ddictionary right now to dist=play itttttttttt");
+
       //create a text element that displays the website name
-      var para = document.createElement(key);
+      /*var para = document.createElement(key);
       var node = document.createTextNode(key);
       para.appendChild(node);
 
@@ -32,11 +34,36 @@ document.addEventListener('DOMContentLoaded', function() {
       para2.appendChild(node2);
 
       element.appendChild(para2);
+      */
+        list.push({y:dictionary[key],label:key});
   });
+  chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    
+    title:{
+        text:"Website Usage with Total Time Allotted"
+    },
+    axisX:{
+        interval: 1
+    },
+    axisY2:{
+        interlacedColor: "rgba(1,77,101,.2)",
+        gridColor: "rgba(1,77,101,.1)",
+        title: "Number of Minutes"
+    },
+    data: [{
+        type: "bar",
+        name: "Websites",
+        axisYType: "secondary",
+        color: "#014D65",
+        dataPoints: list
+    }]
+  });
+  chart.render();
+  console.log("webpage ran");
 
   });
   
-  //for every website
   
  
   
