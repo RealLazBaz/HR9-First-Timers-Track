@@ -28,7 +28,29 @@ chrome.tabs.onActivated.addListener (
         chrome.tabs.get(activeInfo.tabId, 
             function (tab) //callback
             {
-                website = tab.url.slice(tab.url.indexOf("//")+2, tab.url.indexOf("/",8));
+
+                //url distinguishing
+                ending = tab.url.slice(tab.url.indexOf("."),tab.url.length)
+                if (tab.url.indexOf(".") == -1){
+                    website = tab.url;
+                }
+                else if(tab.url.indexOf("/",8) != -1){
+                    website = tab.url.slice(tab.url.indexOf("//")+2, tab.url.indexOf("/",8));
+                }else if(tab.url.indexOf("www.") != -1){
+                if(ending.length < 3){
+                    website = tab.url.slice(tab.url.indexOf("www.")+4, tab.url.indexOf(".",12)+3);
+                }else{
+                    website = tab.url.slice(tab.url.indexOf("www.")+4, tab.url.indexOf(".",12)+4);
+                }
+                }else{
+                 website = tab.url.slice(tab.url.indexOf("//")+2, tab.url.length);
+                } 
+
+
+
+
+
+
                 //if this is a new URL
                 if (!webInfo[website])
                     webInfo[website] = 0

@@ -21,18 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
       var index = 0
       Object.keys(dictionary).forEach(function(key) {
         var table = document.getElementById("table");
-        table.style.borderPadding = 0;
-      //create a text element that displays the amount of time on the site
+        table.style.webkitBorderHorizontalSpacing = 0;
+        table.style.webkitBorderVerticalSpacing = 3;
+        //table.style.borderTopWidth = 10;
+        table.style.borderWidth = 10;
+        //table.style.borderBottomWidth = 10;
+        table.style.borderColor = "black";
       //create a row
       var row = table.insertRow(index);
       //create the data cells
       var siteCell = row.insertCell(0);
       row.insertCell(1); //empty cell so that there is space
       var timeCell = row.insertCell(2);
+      row.insertCell(3);
 
       //generate cells for 2040 minutes 
       var i;
-      for (i = 2; i < 24*60; i++) {
+      for (i = 4; i < (24*60)+2; i++) {
       var tempcell = row.insertCell(i);
       //if the amount of minutes is more than or equal to the current cell, then
       minutes = Math.floor (dictionary[key]/60);
@@ -47,10 +52,23 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }
       }
-      var time = row.insertCell((24*60)+1);
       siteCell.innerHTML = key;
       timeCell.innerHTML = dictionary[key];
       siteCell.class = "site"; 
+      var lastCell = row.insertCell(24*60);
+      var hours = Math.floor (minutes/60);
+      minutes = minutes%60;
+      //if there are hours and no minutes
+      if (hours != 0 && minutes == 0)
+        timeCell.innerHTML = hours + " hour(s)";
+      //if there are no hours, but there are minutes
+      else if(hours == 0 && minutes != 0)  
+        timeCell.innerHTML = minutes + " minute(s)";
+      //if there are hours and minutes
+      else if (hours != 0 && minutes != 0)
+        timeCell.innerHTML = hours + " hour(s) and " + minutes + " minute(s)";
+      else
+        timeCell.innerHTML = dictionary[key] + " second(s)";
       index += 1;
   });
 
