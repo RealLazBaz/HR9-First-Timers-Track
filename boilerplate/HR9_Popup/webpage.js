@@ -1,8 +1,7 @@
 var chart;
 
 window.onload = function () {
-    console.log("hello it got here");
-    console.log(webInfo);  
+    console.log("hello it got over here");
     list = [];
     var dictionary = {}
     chrome.storage.local.get(['key'], function(result) {
