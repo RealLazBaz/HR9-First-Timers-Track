@@ -33,7 +33,7 @@ chrome.tabs.onActivated.addListener (
                 //if this is a new URL
                 if (!webInfo[tab.url])
                     webInfo[tab.url] = 0
-                intervalId = setInterval (howLongOnSite (tab.url),1000); 
+                intervalId = setInterval (howLongOnSite (tab.url),60000); 
             }
         );
     }
