@@ -8,17 +8,23 @@ function howLongOnSite (website)
     {
         webInfo [website] = webInfo [website] + 1;
         
-        chrome.storage.sync.set({'key': webInfo}, function() {
+        chrome.storage.sync.set({'key': "something!!!!!!!!!!"}, function() {
             console.log('stuff saved');
         });
 
-        chrome.storage.sync.get(['key'], function(data) {
+        /*chrome.storage.sync.get(['key'], function(data) {
             console.log("This is data: " + data[0]); //undefined
             console.log("WebInfo is :" + webInfo); //[object Object]
             console.log("Data is :" + data); //[object Object]
             var key = 'key';
             console.log("data.key:" + data.key); //[object Object]
         });
+        */
+
+
+       chrome.storage.sync.get(['key'], function(result) {
+        console.log('Value currently is ' + result.key);
+      });
     }
 }
 
