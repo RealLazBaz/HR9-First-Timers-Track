@@ -58,17 +58,33 @@ document.addEventListener('DOMContentLoaded', function() {
       var lastCell = row.insertCell(24*60);
       var hours = Math.floor (minutes/60);
       minutes = minutes%60;
-      //if there are hours and no minutes
-      if (hours != 0 && minutes == 0)
-        timeCell.innerHTML = hours + " hour(s)";
+
+      //if there is no hours and 1 minute
+      if(hours == 0 && minutes == 1)  
+        timeCell.innerHTML = "1 minute";
       //if there are no hours, but there are minutes
       else if(hours == 0 && minutes != 0)  
-        timeCell.innerHTML = minutes + " minute(s)";
+        timeCell.innerHTML = minutes + " minutes";
+      //if there is one hour and no minutes
+      else if (hours == 1 && minutes == 0)
+        timeCell.innerHTML = "1 hour";
+      //if there is hour and one minute
+      else if (hours == 1 && minutes == 1)
+        timeCell.innerHTML = "1 hour and 1 minute";
+      //if there is one hour and a couple minutes
+      else if (hours == 1 && minutes != 0)
+        timeCell.innerHTML = "1 hour and " + minutes + " minutes";
+      //if there is more than one hour and no minutes
+      else if(hours != 0 && minutes == 0)
+        timeCell.innerHTML = hours + " hours";
+      //if there is more than one hour and one minutes
+      else if(hours != 0 && minutes == 1)
+        timeCell.innerHTML = hours + " hours and 1 minute";
       //if there are hours and minutes
       else if (hours != 0 && minutes != 0)
-        timeCell.innerHTML = hours + " hour(s) and " + minutes + " minute(s)";
+        timeCell.innerHTML = hours + " hours and " + minutes + " minutes";
       else
-        timeCell.innerHTML = dictionary[key] + " second(s)";
+        timeCell.innerHTML = dictionary[key] + " seconds";
       index += 1;
   });
 
