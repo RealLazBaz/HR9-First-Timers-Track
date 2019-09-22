@@ -1,32 +1,26 @@
 // {website : time spent on it, website2 : time spent on that, 
 
-var intervalId = 0;
-    
 function howLongOnSite (website)
 {
     return function()
     {
-        webInfo [website] = webInfo [website] + 5;
-        chrome.storage.local.set({'key': JSON.stringify(webInfo)}, function() {
-            console.log('I promise it saved');
-        });
+        webInfo [website] = webInfo [website] + 1;
+        chrome.storage.local.set({'key': JSON.stringify(webInfo)}, function() {});
 
        chrome.storage.local.get(['key'], function(result) {
-        console.log("The following line is the actual WebInfo Shit");
-        console.log(JSON.parse(result.key));
       });
     }
 }
 
 const webInfo  = {};
-var intervalId = 0
+var intervalId = 0;
+var oldURL = "";
 //Timer code
 chrome.tabs.onActivated.addListener (
     function (activeInfo ){
-        console.log(webInfo);
-        clearInterval(intervalId)
+        clearInterval(intervalId);
         chrome.tabs.get(activeInfo.tabId, 
-            function (tab) //callback
+            function (tab)
             {
 
                 //url distinguishing
@@ -47,15 +41,50 @@ chrome.tabs.onActivated.addListener (
                 } 
 
 
-
-
-
-
                 //if this is a new URL
                 if (!webInfo[website])
-                    webInfo[website] = 0
-                intervalId = setInterval (howLongOnSite (website),5000); 
+                    webInfo[website] = 0;
+                intervalId = setInterval (howLongOnSite (website),1000);
+                
             }
+
         );
     }
 );
+
+
+chrome.tabs.onUpdate.addListener (
+    function (status, url){
+        var website = "";
+                ending = activeInfo.tab.url.slice(activeInfo.tab.url.indexOf("."),activeInfo.tab.url.length)
+                if (url.indexOf(".") == -1){
+                    website = url;
+                }
+                else if(activeInfo.tab.url.indexOf("/",8) != -1){
+                    website = url.slice(url.indexOf("//")+2, url.indexOf("/",8));
+                }else if(url.indexOf("www.") != -1){
+                if(ending.length < 3){
+                    website = url.slice(url.indexOf("www.")+4, url.indexOf(".",12)+3);
+                }else{
+                    website = url.slice(url.indexOf("www.")+4, url.indexOf(".",12)+4);
+                }
+                }else{
+                 website = url.slice(url.indexOf("//")+2, url.length);
+                } 
+
+
+        if(oldURL == ""){
+            console.log("OLD URL IS BEING SET TO THE CURRENT URL");
+            oldURL = website;
+        }
+
+        if (oldURL!=website){
+            console.log("Oldurl and the current website are different, therefore we are gonna change stuff");
+            clearInterval(intervalId);
+            oldURL = website;
+        }
+        else
+        {
+            console.log("THEYRE THE SAME");
+        }
+    });
