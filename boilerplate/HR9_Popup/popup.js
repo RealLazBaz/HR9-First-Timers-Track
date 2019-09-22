@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
       //create a text element that displays the website name
       var para = document.createElement(key);
-      var node = document.createTextNode(key);
+      var node = document.createTextNode(key+ "         ");
       para.appendChild(node);
 
       var element = document.getElementById("contents");
       element.appendChild(para);
       //create a text element that displays the amount of time on the site
       var para2 = document.createElement(key);
-      var node2 = document.createTextNode(dictionary[key]);
+      var node2 = document.createTextNode(dictionary[key] + "\n");
       para2.appendChild(node2);
 
       element.appendChild(para2);
