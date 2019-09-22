@@ -38,10 +38,11 @@ chrome.tabs.onActivated.addListener (
 );
 
 //control the popup
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function() {
     console.log("popup has loaded");
     list = [];
     var dictionary = {}
+    //this code doesn't actually run FOR SOME FUCKING REASON
     chrome.storage.local.get(['key'], function(result) {
         dictionary = JSON.parse(result.key);
         console.log("Have loaded the saved data onto the pop as follows");
@@ -54,4 +55,4 @@ window.onload = function () {
     }));
     */
     
-}
+});
