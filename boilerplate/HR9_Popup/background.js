@@ -8,14 +8,13 @@ function howLongOnSite (website)
     {
         webInfo [website] = webInfo [website] + 5;
         
-        chrome.storage.local.set({'key': webInfo}, function() {
+        chrome.storage.local.set({'key': JSON.stringify(webInfo)}, function() {
             console.log('stuff saved');
         });
 
 
-
        chrome.storage.local.get(['key'], function(result) {
-        console.log(result.key);
+        console.log(JSON.parse(result.key));
       });
     }
 }
@@ -38,3 +37,22 @@ chrome.tabs.onActivated.addListener (
         );
     }
 );
+
+//control the popup
+window.onload = function () {
+    console.log("window has loaded");
+    list = [];
+    var dictionary = {}
+    chrome.storage.local.get(['key'], function(result) {
+        dictionary = result.key;
+        console.log("data has been loaded");
+    });
+    console.log(dictionary);
+    
+    Object.keys(dictionary.forEach(function(key) {
+        list.push({y:dictionary[key],label:key});
+        document.getElementById("timeInSeconds").textContent = dictionary[key]
+    }));
+    
+    
+}
