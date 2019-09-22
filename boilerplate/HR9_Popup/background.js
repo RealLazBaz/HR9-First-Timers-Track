@@ -16,6 +16,9 @@ function howLongOnSite (website)
 
        chrome.storage.local.get(['key'], function(result) {
         console.log(result);
+        var thing = 'key'
+        console.log(result.key);
+        console.log(result.thing);
       });
     }
 }
@@ -33,7 +36,7 @@ chrome.tabs.onActivated.addListener (
                 //if this is a new URL
                 if (!webInfo[tab.url])
                     webInfo[tab.url] = 0
-                intervalId = setInterval (howLongOnSite (tab.url),60000); 
+                intervalId = setInterval (howLongOnSite (tab.url),20000); 
             }
         );
     }
