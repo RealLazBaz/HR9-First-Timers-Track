@@ -1,5 +1,4 @@
-// {website : time spent on it, website2 : time spent on that, ...
-//<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/en-gb.js" integrity="sha256-VWXSrU6D6hQJ7MEZ9062PvZDwmeRuZ8eE/ToQ2N3QjA=" crossorigin="anonymous"></script>
+// {website : time spent on it, website2 : time spent on that, 
 
 var intervalId = 0;
     
@@ -9,10 +8,10 @@ function howLongOnSite (website)
     {
         webInfo [website] = webInfo [website] + 1;
 
-        chrome.storage.local.set({"The freaking information" : webInfo});
-        chrome.storage.local.get("The freaking information", function(data)
-        {
-            key = "The freaking information"
+        chrome.storage.sync.set({'key': webInfo}, function() {
+            alert('stuff saved');
+        });
+        chrome.storage.local.get('key', function(data) {
             console.log("This is WebInfo: " + data.key);
         });
     }
