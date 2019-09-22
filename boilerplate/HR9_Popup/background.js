@@ -7,12 +7,18 @@ function howLongOnSite (website)
     return function()
     {
         webInfo [website] = webInfo [website] + 1;
-
+        
         chrome.storage.sync.set({'key': webInfo}, function() {
             console.log('stuff saved');
         });
-        chrome.storage.local.get('key', function(data) {
+
+        chrome.storage.sync.get('key', function(data) {
             console.log("This is data: " + data[0]);
+            console.log("data[0] is :" + + data[0]);
+            console.log("WebInfo is :" + webInfo);
+            console.log("Data is :" + data);
+            var key = 'key';
+            console.log("data.key:" + data.key);
         });
     }
 }
